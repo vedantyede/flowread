@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens: Minimalist Monochrome ─────────────────── */
+:root {
+  --background:       #FFFFFF;
+  --foreground:       #000000;
+  --muted:            #F5F5F5;
+  --muted-foreground: #525252;
+  --border:           #000000;
+  --border-light:     #E5E5E5;
+  --font-display:     'Playfair Display', Georgia, serif;
+  --font-body:        'Source Serif 4', Georgia, serif;
+  --font-mono:        'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  /* Paper-like noise texture */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+::selection { background: #000; color: #fff; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #fff; }
+::-webkit-scrollbar-thumb { background: #000; }
+
+textarea, input { outline: none; font-family: var(--font-mono); }
+
+/* ─── Range Input ───────────────────────────────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+input[type="range"]::-webkit-slider-track {
+  background: var(--border-light);
+  height: 1px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #000;
+  margin-top: -5.5px;
+  transition: none;
+}
+input[type="range"]:hover::-webkit-slider-thumb { background: #000; }
+
+/* ─── Word flash animation ──────────────────────────────────── */
+@keyframes wordIn {
+  0%   { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes wordOut {
+  0%   { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.word-in  { animation: wordIn  0.1s ease forwards; }
+.word-out { animation: wordOut 0.08s ease forwards; }
+.fade-up  { animation: fadeUp 0.4s ease forwards; }
+
+/* ─── Horizontal line textures ─────────────────────────────── */
+.texture-lines {
+  position: relative;
+}
+.texture-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 1px, #000 1px, #000 2px
+  );
+  background-size: 100% 4px;
+  opacity: 0.015;
+  pointer-events: none;
+}
+
+/* ─── Inverted section texture (vertical lines) ─────────────── */
+.texture-inverted::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg, transparent, transparent 1px, #fff 1px, #fff 2px
+  );
+  background-size: 4px 100%;
+  opacity: 0.03;
+  pointer-events: none;
+}
