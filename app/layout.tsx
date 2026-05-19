@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "FlowRead — Speed Reading Tool",
   description:
     "Read faster, retain more. Paste any text and FlowRead flashes words at your chosen speed using the proven RSVP technique.",
+  verification: {
+    google: "jWyZ2o7YqvoG1mnrRSbX0VDklPdt6TvA2jLCqsfWJpQ",
+  },
   keywords: ["speed reading", "speed reader", "RSVP reading", "read faster", "focus reading", "productivity"],
   authors: [{ name: "FlowRead" }],
   creator: "FlowRead",
