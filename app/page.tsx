@@ -89,6 +89,7 @@ export default function SpeedReader() {
       indexRef.current = nextIdx;
       setCurrentIndex(nextIdx);
       setWordKey((k) => k + 1);
+      // eslint-disable-next-line react-hooks/immutability
       scheduleNext(nextIdx, wordsArr, speed);
     }, interval);
   }, [clearTimer]);
@@ -158,24 +159,25 @@ export default function SpeedReader() {
         height: "64px",
       }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
-          <span style={{
+          <h1 style={{
             fontFamily: "var(--font-display)",
             fontWeight: 900,
             fontSize: "1.375rem",
             letterSpacing: "-0.03em",
             lineHeight: 1,
             color: "#000",
-          }}>FlowRead</span>
-          <span style={{
+          }}>FlowRead</h1>
+          <h2 style={{
             fontFamily: "var(--font-mono)",
             fontSize: "0.65rem",
             letterSpacing: "0.15em",
             color: "#525252",
             textTransform: "uppercase",
-          }}>Speed Reader</span>
+          }}>Speed Reader</h2>
         </div>
 
         <button
+        disabled
           onClick={() => setShowSupport(true)}
           style={{
             fontFamily: "var(--font-mono)",

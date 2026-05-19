@@ -31,7 +31,7 @@ export default function SpeedPanel({ wpm, setWpm, compact }: { wpm: number; setW
         value={wpm}
         onChange={(e) => setWpm(Number(e.target.value))}
         aria-label="Reading speed in words per minute"
-        style={{ marginBottom: "0.75rem" }}
+        style={{ marginBottom: "0.75rem", border: "1px solid #888", paddingTop: "6px" }}
       />
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
